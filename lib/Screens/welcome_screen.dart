@@ -2,9 +2,13 @@ import 'package:c_square2/Screens/signup_screen.dart';
 import 'package:c_square2/Widgets/round_Button.dart';
 import 'package:flutter/material.dart';
 import 'package:c_square2/palette.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'login_screen.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'home_screen.dart';
+import 'package:flutter/cupertino.dart';
+import 'package:c_square2/auth.dart';
+import 'package:flutter_signin_button/flutter_signin_button.dart';
 
 class WelcomeScreen extends StatefulWidget {
   static String id = 'Welcome_screen';
@@ -79,14 +83,27 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
                 ),
               ),
             ),
-            FlatButton(
-                onPressed: () {
-                  Navigator.pushNamed(context, HomeScreen.id);
-                },
-                child: Text(
-                  'Skip ',
-                  style: TextStyle(color: kTextColor),
-                )),
+            Padding(
+              padding:
+                  const EdgeInsets.symmetric(vertical: 8.0, horizontal: 80),
+              child: SignInButton(
+                Buttons.Google,
+                shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(30)),
+                text: "Sign up with Google",
+                onPressed: () => googleSignIn().whenComplete(
+                  () => Navigator.pushNamed(context, HomeScreen.id),
+                ),
+              ),
+            ),
+            // FlatButton(
+            //     onPressed: () {
+            //       Navigator.pushNamed(context, HomeScreen.id);
+            //     },
+            //     child: Text(
+            //       'Skip ',
+            //       style: TextStyle(color: kTextColor),
+            //     )),
           ],
         ),
       ),

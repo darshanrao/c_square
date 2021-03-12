@@ -4,8 +4,7 @@ import 'file:///D:/AppDev/c_square/lib/Widgets/round_Button.dart';
 import 'package:c_square2/constants.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'login_screen.dart';
-
-import 'list_view_screen.dart';
+import 'package:c_square2/auth.dart';
 
 class SignUpScreen extends StatefulWidget {
   static String id = 'SignUp_Screen';
@@ -114,23 +113,10 @@ class _SignUpScreenState extends State<SignUpScreen> {
                     child: RoundedButton(
                       color: kDarkPrimaryColor,
                       text: 'Sign Up',
-                      onPress: () async {
-                        if (passError() != true) {
-                          try {
-                            final newUser =
-                                _auth.createUserWithEmailAndPassword(
-                                    email: email, password: password);
-                            if (newUser != null) {
-                              // Navigator.pop(context);
-                              Navigator.pushNamed(context, LoginScreen.id);
-                            }
-                          } catch (e) {
-                            print(e);
-                          }
-                        } else {
-                          getMessage();
-                        }
-                      },
+                      onPress: () =>
+                          signUp(email, password, context).whenComplete(
+                        () => Navigator.pushNamed(context, LoginScreen.id),
+                      ),
                     ),
                   ),
                 )

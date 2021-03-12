@@ -1,4 +1,5 @@
 import 'package:c_square2/Screens/home_screen.dart';
+import 'package:c_square2/auth.dart';
 import 'package:flutter/material.dart';
 import 'package:c_square2/palette.dart';
 import 'file:///D:/AppDev/c_square/lib/Widgets/round_Button.dart';
@@ -96,18 +97,9 @@ class _LoginScreenState extends State<LoginScreen> {
                     child: RoundedButton(
                       color: kDarkPrimaryColor,
                       text: 'Log In',
-                      onPress: () async {
-                        try {
-                          final user = await _auth.signInWithEmailAndPassword(
-                              email: email, password: password);
-                          if (user != null) {
-                            // Navigator.pop(context);
-                            Navigator.pushNamed(context, HomeScreen.id);
-                          }
-                        } catch (e) {
-                          print(e);
-                        }
-                      },
+                      onPress: () => signin(email, password, context)
+                          .whenComplete(() =>
+                              Navigator.pushNamed(context, HomeScreen.id)),
                     ),
                   ),
                 )
