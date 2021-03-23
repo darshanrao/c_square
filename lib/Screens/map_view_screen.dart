@@ -100,9 +100,10 @@ class _MapViewScreenState extends State<MapViewScreen> {
                 iconSize: 45.0,
                 onPressed: () {
                   print(location.name);
-                  showModalBottomSheet(
+                  showModalBottomSheet<void>(
                     context: context,
-                    builder: (context) => showBottomSheet(location.name),
+                    builder: (BuildContext context) =>
+                        showBottomSheet(location.name),
                   );
                 },
               ),

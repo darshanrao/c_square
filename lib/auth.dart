@@ -7,29 +7,28 @@ import 'package:flutter_facebook_auth/flutter_facebook_auth.dart';
 FirebaseAuth auth = FirebaseAuth.instance;
 final gooleSignIn = GoogleSignIn();
 
-// a simple sialog to be visible everytime some error occurs
 showErrDialog(BuildContext context, String err) {
   // to hide the keyboard, if it is still p
   FocusScope.of(context).requestFocus(new FocusNode());
   return showDialog(
     context: context,
-    child: AlertDialog(
-      title: Text("Error"),
-      content: Text(err),
-      actions: <Widget>[
-        OutlineButton(
-          onPressed: () {
-            Navigator.pop(context);
-          },
-          child: Text("Ok"),
-        ),
-      ],
-    ),
+    builder: (context) {
+      return AlertDialog(
+        title: Text("Error"),
+        content: Text(err),
+        actions: <Widget>[
+          OutlineButton(
+            onPressed: () {
+              Navigator.pop(context);
+            },
+            child: Text("Ok"),
+          ),
+        ],
+      );
+    },
   );
 }
 
-// many unhandled google error exist
-// will push them soon
 Future<bool> googleSignIn() async {
   GoogleSignInAccount googleSignInAccount = await gooleSignIn.signIn();
 
@@ -50,8 +49,6 @@ Future<bool> googleSignIn() async {
   }
 }
 
-// instead of returning true or false
-// returning user to directly access UserID
 Future<User> signin(String email, String password, BuildContext context) async {
   try {
     UserCredential result =
@@ -82,10 +79,6 @@ Future<User> signin(String email, String password, BuildContext context) async {
         showErrDialog(context, e.code);
         break;
     }
-    // since we are not actually continuing after displaying errors
-    // the false value will not be returned
-    // hence we don't have to check the valur returned in from the signin function
-    // whenever we call it anywhere
     return Future.value(null);
   }
 }

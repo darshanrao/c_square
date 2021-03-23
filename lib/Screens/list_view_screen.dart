@@ -83,7 +83,7 @@ class _ListViewScreenState extends State<ListViewScreen> {
                 size: 50,
               )
             : ListView.builder(
-                itemCount: null == _country ? 0 : _country.length,
+                itemCount: null == _country.length ? 0 : _country.length,
                 itemBuilder: (context, index) {
                   return _listItem(index);
                 },

@@ -37,6 +37,7 @@ class _HomeScreenState extends State<HomeScreen> {
 
   @override
   Widget build(BuildContext context) {
+    double height = MediaQuery.of(context).size.height;
     return DefaultTabController(
       length: 3,
       child: Scaffold(
@@ -78,186 +79,221 @@ class _HomeScreenState extends State<HomeScreen> {
                     size: 50,
                   )
                 : SingleChildScrollView(
-                    child: Padding(
-                      padding: const EdgeInsets.all(16.0),
-                      child: Container(
-                          padding: const EdgeInsets.all(16.0),
-                          decoration: BoxDecoration(
-                            color: kTextColor,
-                            borderRadius: BorderRadius.circular(16.0),
-                          ),
-                          child: Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
+                    child: Stack(
+                      children: [
+                        Stack(children: [
+                          Column(
                             children: [
-                              Padding(
-                                padding: const EdgeInsets.all(8.0),
-                                child: Text(
-                                  'Global',
-                                  style: TextStyle(
-                                      fontWeight: FontWeight.bold,
-                                      fontSize: 16),
-                                ),
-                              ),
-                              Row(
-                                mainAxisAlignment: MainAxisAlignment.start,
-                                children: [
-                                  Padding(
-                                    padding: const EdgeInsets.only(right: 80),
-                                    child: Column(
-                                      crossAxisAlignment:
-                                          CrossAxisAlignment.start,
-                                      children: [
-                                        TextCard(
-                                          heading: 'Active',
-                                          text: (getTotal().confirmed -
-                                                  getTotal().recovered -
-                                                  getTotal().deaths)
-                                              .toString(),
-                                          trailing: '',
-                                          color: Colors.yellow[900],
-                                        ),
-                                        TextCard(
-                                          heading: 'Deceased',
-                                          text: getTotal().deaths.toString(),
-                                          trailing: (getTotal().deaths -
-                                                  getTotal().deathsm1)
-                                              .toString(),
-                                          color: Colors.black,
-                                        ),
-                                      ],
-                                    ),
-                                  ),
-                                  Column(
-                                    crossAxisAlignment:
-                                        CrossAxisAlignment.start,
-                                    children: [
-                                      TextCard(
-                                        heading: 'Recovered',
-                                        text: getTotal().recovered.toString(),
-                                        trailing: (getTotal().recovered -
-                                                getTotal().recoveredm1)
-                                            .toString(),
-                                        color: Colors.green,
-                                      ),
-                                      TextCard(
-                                        heading: 'Confirmed',
-                                        text: getTotal().confirmed.toString(),
-                                        trailing: (getTotal().confirmed -
-                                                getTotal().confirmedm1)
-                                            .toString(),
-                                        color: Colors.red,
-                                      ),
-                                    ],
-                                  ),
-                                ],
-                              ),
-                              Divider(),
-                              Padding(
-                                padding: const EdgeInsets.all(8.0),
-                                child: Text(
-                                  'India',
-                                  style: TextStyle(
-                                      fontWeight: FontWeight.bold,
-                                      fontSize: 16),
-                                ),
-                              ),
-                              Row(
-                                mainAxisAlignment: MainAxisAlignment.start,
-                                children: [
-                                  Padding(
-                                    padding: const EdgeInsets.only(right: 80),
-                                    child: Column(
-                                      crossAxisAlignment:
-                                          CrossAxisAlignment.start,
-                                      children: [
-                                        TextCard(
-                                          heading: 'Active',
-                                          text: (getIndia().confirmed -
-                                                  getIndia().recovered -
-                                                  getIndia().deaths)
-                                              .toString(),
-                                          trailing: '',
-                                          color: Colors.yellow[900],
-                                        ),
-                                        TextCard(
-                                          heading: 'Deceased',
-                                          text: getIndia().deaths.toString(),
-                                          trailing: (getIndia().deaths -
-                                                  getIndia().deathsm1)
-                                              .toString(),
-                                          color: Colors.black,
-                                        ),
-                                      ],
-                                    ),
-                                  ),
-                                  Column(
-                                    crossAxisAlignment:
-                                        CrossAxisAlignment.start,
-                                    children: [
-                                      TextCard(
-                                        heading: 'Recovered',
-                                        text: getIndia().recovered.toString(),
-                                        trailing: (getIndia().recovered -
-                                                getIndia().recoveredm1)
-                                            .toString(),
-                                        color: Colors.green,
-                                      ),
-                                      TextCard(
-                                        heading: 'Confirmed',
-                                        text: getIndia().confirmed.toString(),
-                                        trailing: (getIndia().confirmed -
-                                                getIndia().confirmedm1)
-                                            .toString(),
-                                        color: Colors.red,
-                                      ),
-                                    ],
-                                  ),
-                                ],
-                              ),
-                              Divider(),
-                              Padding(
-                                padding: const EdgeInsets.all(8.0),
-                                child: Text(
-                                  'Global Confirmed',
-                                  style: TextStyle(
-                                      fontWeight: FontWeight.bold,
-                                      fontSize: 16,
-                                      color: Colors.red),
-                                ),
-                              ),
-                              LineChartConfirmedWidget(
-                                country: getTotal(),
-                              ),
-                              Divider(),
-                              Padding(
-                                padding: const EdgeInsets.all(8.0),
-                                child: Text(
-                                  'Global Recovered',
-                                  style: TextStyle(
-                                      fontWeight: FontWeight.bold,
-                                      fontSize: 16,
-                                      color: Colors.green),
-                                ),
-                              ),
-                              LineChartRecoveredWidget(
-                                country: getTotal(),
-                              ),
-                              Divider(),
-                              Padding(
-                                padding: const EdgeInsets.all(8.0),
-                                child: Text(
-                                  'Global Deaths',
-                                  style: TextStyle(
-                                      fontWeight: FontWeight.bold,
-                                      fontSize: 16),
-                                ),
-                              ),
-                              LineChartDeathsWidget(
-                                country: getTotal(),
-                              ),
-                              Divider(),
+                              Container(
+                                  color: kDarkPrimaryColor,
+                                  height: 0.2 * height,
+                                  width: double.infinity),
+                              Container(
+                                  color: Colors.white,
+                                  height: 2.2 * height,
+                                  width: double.infinity),
                             ],
-                          )),
+                          ),
+
+// REST OF YOUR WIDGETS IN A COLUMN
+                        ]),
+                        Padding(
+                          padding: const EdgeInsets.all(16.0),
+                          child: Container(
+                              padding: const EdgeInsets.all(16.0),
+                              decoration: BoxDecoration(
+                                color: kTextColor,
+                                borderRadius: BorderRadius.circular(16.0),
+                                boxShadow: [
+                                  BoxShadow(
+                                    color: Colors.grey,
+                                    offset: Offset(0.0, 1.0), //(x,y)
+                                    blurRadius: 6.0,
+                                  ),
+                                ],
+                              ),
+                              child: Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  Padding(
+                                    padding: const EdgeInsets.all(8.0),
+                                    child: Text(
+                                      'Global',
+                                      style: TextStyle(
+                                          fontWeight: FontWeight.bold,
+                                          fontSize: 16),
+                                    ),
+                                  ),
+                                  Row(
+                                    mainAxisAlignment: MainAxisAlignment.start,
+                                    children: [
+                                      Padding(
+                                        padding:
+                                            const EdgeInsets.only(right: 80),
+                                        child: Column(
+                                          crossAxisAlignment:
+                                              CrossAxisAlignment.start,
+                                          children: [
+                                            TextCard(
+                                              heading: 'Active',
+                                              text: (getTotal().confirmed -
+                                                      getTotal().recovered -
+                                                      getTotal().deaths)
+                                                  .toString(),
+                                              trailing: '',
+                                              color: Colors.yellow[900],
+                                            ),
+                                            TextCard(
+                                              heading: 'Deceased',
+                                              text:
+                                                  getTotal().deaths.toString(),
+                                              trailing: (getTotal().deaths -
+                                                      getTotal().deathsm1)
+                                                  .toString(),
+                                              color: Colors.black,
+                                            ),
+                                          ],
+                                        ),
+                                      ),
+                                      Column(
+                                        crossAxisAlignment:
+                                            CrossAxisAlignment.start,
+                                        children: [
+                                          TextCard(
+                                            heading: 'Recovered',
+                                            text:
+                                                getTotal().recovered.toString(),
+                                            trailing: (getTotal().recovered -
+                                                    getTotal().recoveredm1)
+                                                .toString(),
+                                            color: Colors.green,
+                                          ),
+                                          TextCard(
+                                            heading: 'Confirmed',
+                                            text:
+                                                getTotal().confirmed.toString(),
+                                            trailing: (getTotal().confirmed -
+                                                    getTotal().confirmedm1)
+                                                .toString(),
+                                            color: Colors.red,
+                                          ),
+                                        ],
+                                      ),
+                                    ],
+                                  ),
+                                  Divider(),
+                                  Padding(
+                                    padding: const EdgeInsets.all(8.0),
+                                    child: Text(
+                                      'India',
+                                      style: TextStyle(
+                                          fontWeight: FontWeight.bold,
+                                          fontSize: 16),
+                                    ),
+                                  ),
+                                  Row(
+                                    mainAxisAlignment: MainAxisAlignment.start,
+                                    children: [
+                                      Padding(
+                                        padding:
+                                            const EdgeInsets.only(right: 80),
+                                        child: Column(
+                                          crossAxisAlignment:
+                                              CrossAxisAlignment.start,
+                                          children: [
+                                            TextCard(
+                                              heading: 'Active',
+                                              text: (getIndia().confirmed -
+                                                      getIndia().recovered -
+                                                      getIndia().deaths)
+                                                  .toString(),
+                                              trailing: '',
+                                              color: Colors.yellow[900],
+                                            ),
+                                            TextCard(
+                                              heading: 'Deceased',
+                                              text:
+                                                  getIndia().deaths.toString(),
+                                              trailing: (getIndia().deaths -
+                                                      getIndia().deathsm1)
+                                                  .toString(),
+                                              color: Colors.black,
+                                            ),
+                                          ],
+                                        ),
+                                      ),
+                                      Column(
+                                        crossAxisAlignment:
+                                            CrossAxisAlignment.start,
+                                        children: [
+                                          TextCard(
+                                            heading: 'Recovered',
+                                            text:
+                                                getIndia().recovered.toString(),
+                                            trailing: (getIndia().recovered -
+                                                    getIndia().recoveredm1)
+                                                .toString(),
+                                            color: Colors.green,
+                                          ),
+                                          TextCard(
+                                            heading: 'Confirmed',
+                                            text:
+                                                getIndia().confirmed.toString(),
+                                            trailing: (getIndia().confirmed -
+                                                    getIndia().confirmedm1)
+                                                .toString(),
+                                            color: Colors.red,
+                                          ),
+                                        ],
+                                      ),
+                                    ],
+                                  ),
+                                  Divider(),
+                                  Padding(
+                                    padding: const EdgeInsets.all(8.0),
+                                    child: Text(
+                                      'Global Confirmed',
+                                      style: TextStyle(
+                                          fontWeight: FontWeight.bold,
+                                          fontSize: 16,
+                                          color: Colors.red),
+                                    ),
+                                  ),
+                                  LineChartConfirmedWidget(
+                                    country: getTotal(),
+                                  ),
+                                  Divider(),
+                                  Padding(
+                                    padding: const EdgeInsets.all(8.0),
+                                    child: Text(
+                                      'Global Recovered',
+                                      style: TextStyle(
+                                          fontWeight: FontWeight.bold,
+                                          fontSize: 16,
+                                          color: Colors.green),
+                                    ),
+                                  ),
+                                  LineChartRecoveredWidget(
+                                    country: getTotal(),
+                                  ),
+                                  Divider(),
+                                  Padding(
+                                    padding: const EdgeInsets.all(8.0),
+                                    child: Text(
+                                      'Global Deaths',
+                                      style: TextStyle(
+                                          fontWeight: FontWeight.bold,
+                                          fontSize: 16),
+                                    ),
+                                  ),
+                                  LineChartDeathsWidget(
+                                    country: getTotal(),
+                                  ),
+                                  Divider(),
+                                ],
+                              )),
+                        ),
+                      ],
                     ),
                   ),
             ListViewScreen(),
