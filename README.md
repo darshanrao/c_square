@@ -1,4 +1,4 @@
-# c_square2
+C-Square
 
 A new Flutter application.
 
