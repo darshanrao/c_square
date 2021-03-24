@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:c_square2/palette.dart';
-import 'file:///D:/AppDev/c_square/lib/Widgets/round_Button.dart';
+import 'package:c_square2/Widgets/round_Button.dart';
 import 'package:c_square2/constants.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'login_screen.dart';
