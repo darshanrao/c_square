@@ -83,27 +83,27 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
                 ),
               ),
             ),
-            Padding(
-              padding:
-                  const EdgeInsets.symmetric(vertical: 8.0, horizontal: 80),
-              child: SignInButton(
-                Buttons.Google,
-                shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(30)),
-                text: "Sign up with Google",
-                onPressed: () => googleSignIn().whenComplete(
-                  () => Navigator.pushNamed(context, HomeScreen.id),
-                ),
-              ),
-            ),
-            // FlatButton(
-            //     onPressed: () {
-            //       Navigator.pushNamed(context, HomeScreen.id);
-            //     },
-            //     child: Text(
-            //       'Skip ',
-            //       style: TextStyle(color: kTextColor),
-            //     )),
+            // Padding(
+            //   padding:
+            //       const EdgeInsets.symmetric(vertical: 8.0, horizontal: 80),
+            //   child: SignInButton(
+            //     Buttons.Google,
+            //     shape: RoundedRectangleBorder(
+            //         borderRadius: BorderRadius.circular(30)),
+            //     text: "Sign up with Google",
+            //     onPressed: () => googleSignIn().whenComplete(
+            //       () => Navigator.pushNamed(context, HomeScreen.id),
+            //     ),
+            //   ),
+            // ),
+            FlatButton(
+                onPressed: () {
+                  Navigator.pushNamed(context, HomeScreen.id);
+                },
+                child: Text(
+                  'Skip ',
+                  style: TextStyle(color: kTextColor),
+                )),
           ],
         ),
       ),
