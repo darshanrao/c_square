@@ -7,15 +7,11 @@ Application for Dynamic Representation of Real Time Corona Cases Across the Worl
 Sample Images:
 
 # Screenshots
-
-<!-- Row 1 -->
-![Carosel](Screenshots/Carosel.png) ![Welcome](Screenshots/Welcome.png) ![About](Screenshots/about.jpeg)
-
-<!-- Row 2 -->
-![Graph 1](Screenshots/graph1.png) ![Graph 2](Screenshots/graph2.png) ![Graph 3](Screenshots/graph3.png)
-
-<!-- Row 3 -->
-![Home](Screenshots/home.png) ![List](Screenshots/list.png) ![Map 1](Screenshots/map.png)
-
-<!-- Additional Rows -->
-<!-- Add more rows if needed -->
+<img src="Screenshots/Carosel.png" width="200" > <img src="Screenshots/Welcome.png" width="200" > <img src="Screenshots/about.jpeg" width="200" >
+<img src="Screenshots/graph1.png" width="200" >
+<img src="Screenshots/graph2.png" width="200" >
+<img src="Screenshots/graph3.png" width="200" >
+<img src="Screenshots/home.png" width="200" >
+<img src="Screenshots/list.png" width="200" >
+<img src="Screenshots/map.png" width="200" >
+<img src="Screenshots/map2.png" width="200" >
